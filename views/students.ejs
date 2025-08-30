@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Students</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>All Students</h1>
+  <form method="GET">
+    <input type="text" name="search" placeholder="Search by name/department">
+    <select name="sort">
+      <option value="">Sort</option>
+      <option value="gpa">GPA</option>
+      <option value="name">Name</option>
+    </select>
+    <button type="submit">Filter</button>
+  </form>
+  <a href="/students/add">Add Student</a>
+  <ul>
+    <% students.forEach(s => { %>
+      <li>
+        <a href="/students/<%= s._id %>"><%= s.name %></a> (GPA: <%= s.gpa %>)
+        | <a href="/students/edit/<%= s._id %>">Edit</a>
+        | <a href="/students/delete/<%= s._id %>">Delete</a>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
